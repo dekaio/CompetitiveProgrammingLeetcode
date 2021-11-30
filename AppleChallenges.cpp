@@ -55,3 +55,30 @@ public:
         return output;
     }
 };
+
+//Threesum has some code issues doesn't give the correct output
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<int>v  = {};
+       vector<vector<int>> output = {};
+        int twosum, complement;
+        map <int, int> m;
+        for (size_t i = 0; i< nums.size();++i){
+            twosum = 0 - nums[i];
+            for (size_t j = i+1;j<nums.size(); ++j){
+                complement = twosum - nums[j];
+                if (m.find(complement)!=m.end()){
+                    v = {static_cast<int>(nums[i]), static_cast<int>(nums[j]), static_cast<int>(complement)};
+                    //return output;
+                    output.push_back(v);
+                }
+                else{
+                    m[nums[j]] = complement;
+                }
+            }
+            
+        }
+        return output;
+    }
+};
